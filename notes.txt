@@ -1,0 +1,273 @@
+---------------------------------------------------------------------
+docker run hello-world
+
+docker pull nginx
+docker run -d -p 8080:80 nginx
+
+mkdir docker-demo
+cd docker-demo
+npm init -y
+
+app.js
+const http = require('http');
+const server = http.createServer((req, res) => {
+ res.end('Hello from inside a container!');
+});
+server.listen(3000, () => {
+ console.log('Running on port 3000');
+});
+
+Dockerfile
+FROM node:18
+WORKDIR /app
+COPY . .
+RUN npm install
+CMD ["node", "app.js"]
+
+docker build -t myapp .
+docker run -p 3000:3000 myapp
+
+docker run --name practice-container practice
+docker rm practice-container
+docker rmi practice
+
+---------------------------------------------------------------------
+
+git config --global user.name "Your Name"
+git config --global user.email "you@example.com"
+
+git init
+
+.gitignore
+node_modules/
+__pycache__/
+.env
+*.log
+.DS_Store
+
+echo "Hello World" > notes.txt
+git status
+git add notes.txt
+
+git commit -m "Add notes file"
+
+git remote add origin https://github.com/username/my-first-project.git
+git branch -M main
+
+git push -u origin main
+
+git pull origin main
+
+git clone https://github.com/username/repo-name.git
+cd repo-name 
+
+
+git clone https://github.com/owner/repo-name.git
+cd repo-name
+git checkout -b my-feature
+
+...edit and save files in VS Code as normal...
+git add
+git commit -m "Describe your change"
+git push -u origin my-feature
+
+
+git checkout -b my-feature
+git push -u origin my-feature
+---------------------------------------------------------------------
+
+wc -l notes.txt
+
+cp notes.txt backup.txt
+mv backup.txt old_notes.txt
+
+rm old_notes.txt
+rmdir empty-folder
+rm -r folder-with-files
+
+ls -l notes.txt
+chmod +x script.sh
+
+ps aux
+$ top
+$ kill 1234
+
+df -h (free / used space on your drives)
+du -sh my-project (total size of one folder)
+free -h (how much RAM is in use)
+
+sudo apt update
+sudo apt install <package-name>
+sudo apt remove <package-name>
+
+ls -l > filelist.txt
+cat notes.txt | grep "Hello"
+
+find . -name "*.txt"
+grep "Hello" notes.txt
+
+sudo adduser newuser
+sudo passwd newuser 
+
+
+su newuser
+su -
+exit
+
+sudo groupadd developers
+sudo usermod -aG developers newuser
+groups newuser
+sudo chown newuser:developers notes.txt
+
+
+#!/bin/bash
+echo "Hello, $(whoami)!"
+echo "Today is $(date)"
+
+#!/bin/bash
+name="Rahul"
+echo "Hello, $name!"
+
+#!/bin/bash
+read -p "What is your name? " name
+echo "Nice to meet you, $name!"
+
+#!/bin/bash
+read -p "Enter a number: " num
+if [ $num -gt 10 ]
+then
+ echo "That's a big number!"
+else
+ echo "That's a small number."
+fi
+
+#!/bin/bash
+for i in 1 2 3 4 5
+do
+ echo "Count: $i"
+done
+n=1
+while [ $n -le 3 ]
+do
+ echo "While loop: $n"
+ n=$((n+1))
+done
+
+#!/bin/bash
+read -p "Enter a folder to back up: " folder
+if [ -d "$folder" ]
+then
+ cp -r "$folder" "$folder-backup"
+ echo "Backup created: $folder-backup"
+else
+ echo "Folder not found!"
+fi
+---------------------------------------------------------------------
+
+2 + 3
+10 / 4
+2 ^ 3
+sqrt(16)
+pi
+
+
+name = "Asha";
+age = 21;
+disp(name)
+fprintf("%s is %d years old\n", name, age)
+class(age)
+class(name)
+
+row = [1 2 3 4]
+col = [1; 2; 3]
+r = 1:5
+length(row)
+
+v = [10 20 30 40 50];
+v(1)
+v(end)
+v(2:4)
+v(2) = 99;
+v
+
+a = [1 2 3];
+b = [4 5 6];
+a + b
+a .* b
+a * 2
+sum(a)
+mean(b)
+
+A = [1 2 3; 4 5 6]
+size(A)
+A(2, 3)
+A(:, 1)
+
+
+A = [1 2; 3 4];
+B = [5 6; 7 8];
+A * B
+A .* B
+A'
+
+
+x = 0:0.1:2*pi;
+y = sin(x);
+plot(x, y)
+xlabel("x")
+ylabel("sin(x)")
+title("Sine wave")
+grid on
+
+x = 0:0.5:2*pi;
+plot(x, sin(x), "r--")
+hold on
+plot(x, cos(x), "b-o")
+legend("sin", "cos")
+hold off
+
+marks = [72 35 88 55 64];
+bar(marks)
+figure
+scatter([1 2 3 4], [2 4 5 9])
+figure
+histogram(marks)
+
+marks = 55;
+if marks >= 40
+ disp("Pass")
+else
+ disp("Fail")
+end
+
+
+n = input("Enter a number: ");
+if mod(n, 2) == 0
+ disp("Even")
+else
+ disp("Odd")
+end
+
+for i = 1:5
+ fprintf("%d squared is %d\n", i, i^2)
+end
+
+n = 3;
+while n > 0
+ disp(n)
+ n = n - 1;
+end
+
+n = 5;
+f = 1;
+for i = 1:n
+ f = f * i;
+end
+fprintf("%d! = %d\n", n, f)
+
+marks = [72 35 88 55 64];
+avg = mean(marks)
+best = max(marks)
+passed = sum(marks >= 40)
+bar(marks)
+---------------------------------------------------------------------
